@@ -1,16 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="es.juliogtrenard.examen_dein_julio_gonzalez.controladores.ProductosController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+       <MenuBar BorderPane.alignment="CENTER">
+           <Menu mnemonicParsing="false" text="Ayuda">
+               <MenuItem mnemonicParsing="false" text="Acerca de" />
+           </Menu>
+       </MenuBar>
+   </top>
+   <center>
+       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+           <BorderPane.margin>
+               <Insets />
+           </BorderPane.margin>
+           <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+               <padding>
+                   <Insets bottom="40.0" left="60.0" top="30.0" />
+               </padding>
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                   <Label text="Codigo del producto:">
+                       <HBox.margin>
+                           <Insets right="10.0" />
+                       </HBox.margin>
+                   </Label>
+                   <TextField fx:id="txtCodigo" />
+               </HBox>
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                   <Label text="Nombre:">
+                       <HBox.margin>
+                           <Insets right="10.0" />
+                       </HBox.margin>
+                   </Label>
+                   <TextField fx:id="txtNombre" />
+               </HBox>
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                   <Label text="Precio:">
+                       <HBox.margin>
+                           <Insets right="10.0" />
+                       </HBox.margin>
+                   </Label>
+                   <TextField fx:id="txtPrecio" />
+               </HBox>
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                   <CheckBox fx:id="cbDisponible" mnemonicParsing="false" text="Disponible" />
+               </HBox>
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                   <Label text="Imagen:">
+                       <HBox.margin>
+                           <Insets right="10.0" />
+                       </HBox.margin>
+                   </Label>
+                   <Button fx:id="btnImagen" mnemonicParsing="false" text="Seleccionar imagen...">
+                       <HBox.margin>
+                           <Insets right="15.0" />
+                       </HBox.margin>
+                   </Button>
+                   <ImageView fx:id="imgImagen" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+               </HBox>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                   <Button mnemonicParsing="false" text="Crear">
+                       <HBox.margin>
+                           <Insets right="30.0" />
+                       </HBox.margin>
+                   </Button>
+                   <Button mnemonicParsing="false" text="Actualizar">
+                       <HBox.margin>
+                           <Insets right="15.0" />
+                       </HBox.margin>
+                   </Button>
+                   <Button mnemonicParsing="false" text="Limpiar" />
+               </HBox>
+           </VBox>
+           <TableView fx:id="tabla" prefHeight="300.0" prefWidth="200.0" />
+       </VBox>
+   </center>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" />
+   </padding>
+</BorderPane>
