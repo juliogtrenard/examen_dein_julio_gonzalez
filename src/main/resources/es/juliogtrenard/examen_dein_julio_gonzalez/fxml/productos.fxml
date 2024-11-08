@@ -9,7 +9,7 @@
    <top>
        <MenuBar BorderPane.alignment="CENTER">
            <Menu mnemonicParsing="false" text="Ayuda">
-               <MenuItem mnemonicParsing="false" text="Acerca de" />
+               <MenuItem onAction="#acercaDe" mnemonicParsing="false" text="Acerca de" />
            </Menu>
        </MenuBar>
    </top>

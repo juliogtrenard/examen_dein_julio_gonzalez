@@ -355,4 +355,16 @@ public class ProductosController implements Initializable {
         txtNombre.clear();
         txtPrecio.clear();
     }
+
+    /**
+     * Acerca de
+     * @param actionEvent el evento
+     */
+    public void acercaDe(ActionEvent actionEvent) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setHeaderText(null);
+        alerta.setTitle("INFO");
+        alerta.setContentText("Gestion de productos 1.0\nAutor: Julio Gonzalez");
+        alerta.showAndWait();
+    }
 }
