@@ -135,6 +135,102 @@ public class ProductosController implements Initializable {
     }
 
     /**
+     * Se ejecuta cuando se pulsa el botón "Crear". Valida que los campos de texto tengan un valor no vacío.
+     * Si los campos son válidos, llama a {@link #procesarProducto()}
+     */
+    @FXML
+    void crear() {
+        String error = validarCampos();
+        if (!error.isEmpty()) {
+            alerta(error);
+        } else {
+            procesarProducto();
+        }
+    }
+
+    /**
+     * Valida que los campos de texto tengan un valor no vacío
+     * @return Cadena con los errores de validación o cadena vacía si los campos son válidos
+     */
+    private String validarCampos() {
+        StringBuilder error = new StringBuilder();
+
+        if (txtCodigo.getText().isEmpty()) {
+            error.append("El codigo no puede estar vacío\n");
+        } else if(txtCodigo.getText().length() > 5 || txtCodigo.getText().length() < 5) {
+            error.append("El codigo debe tener 5 caracteres\n");
+        }
+        if (txtNombre.getText().isEmpty()) {
+            error.append("El nombre no puede estar vacío\n");
+        }
+        if (txtPrecio.getText().isEmpty()) {
+            error.append("El precio no puede estar vacío\n");
+        }
+        try{
+            Double.parseDouble(txtPrecio.getText());
+        } catch (NumberFormatException e) {
+            error.append("El precio debe ser un número decimal\n");
+        }
+
+        return error.toString();
+    }
+
+    /**
+     * Procesa el producto.
+     */
+    private void procesarProducto() {
+        Producto producto = crearProducto();
+        if (esProductoDuplicado(producto)) {
+            alerta("El producto ya existe");
+        } else {
+            guardarProducto(producto);
+        }
+    }
+
+    /**
+     * Crea un objeto producto
+     *
+     * @return Producto con sus datos
+     */
+    private Producto crearProducto() {
+        Producto producto = new Producto();
+        producto.setCodigo(txtCodigo.getText());
+        producto.setNombre(txtNombre.getText());
+        producto.setPrecio(Double.parseDouble(txtPrecio.getText()));
+        producto.setDisponible(cbDisponible.isSelected());
+        producto.setImagen(imagen);
+        return producto;
+    }
+
+    /**
+     * Verifica si el producto ya existe
+     *
+     * @param producto a comparar
+     * @return true si existe, false si no
+     */
+    private boolean esProductoDuplicado(Producto producto) {
+        ObservableList<Producto> productos = DaoProducto.cargarListado();
+        return productos.contains(producto);
+    }
+
+    /**
+     * Guarda el producto en la BBDD
+     * o un mensaje de error si ha habido un problema
+     *
+     * @param producto a insertar
+     */
+    private void guardarProducto(Producto producto) {
+        boolean resultado = DaoProducto.insertar(producto);
+        if (!resultado) {
+            alerta("Ha habido un error insertando el producto. Por favor inténtelo de nuevo");
+        } else {
+            confirmacion("Producto insertado correctamente!");
+            limpiarCampos();
+            cargarProductos();
+        }
+    }
+
+    /**
      * Abre un FileChooser para seleccionar una imagen
      *
      * @param event El evento
@@ -188,5 +284,14 @@ public class ProductosController implements Initializable {
         alerta.setTitle("Info");
         alerta.setContentText(texto);
         alerta.showAndWait();
+    }
+
+    /**
+     * Limpia los campos de entrada de texto.
+     */
+    private void limpiarCampos() {
+        txtCodigo.clear();
+        txtNombre.clear();
+        txtPrecio.clear();
     }
 }
