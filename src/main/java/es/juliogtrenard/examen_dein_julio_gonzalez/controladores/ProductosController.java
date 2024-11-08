@@ -149,6 +149,22 @@ public class ProductosController implements Initializable {
     }
 
     /**
+     * Se ejecuta cuando se pulsa el botón "Limpiar".
+     */
+    @FXML
+    void limpiar() {
+        limpiarCampos();
+        tabla.getSelectionModel().clearSelection();
+        masterData.clear();
+        filteredData.clear();
+        tabla.getItems().clear();
+        tabla.getColumns().clear();
+        txtCodigo.setDisable(false);
+        btnActualizar.setDisable(true);
+        btnCrear.setDisable(false);
+    }
+
+    /**
      * Carga los productos de la base de datos
      */
     private void cargarProductos() {

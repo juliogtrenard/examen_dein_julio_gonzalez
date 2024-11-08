@@ -73,7 +73,7 @@
                            <Insets right="15.0" />
                        </HBox.margin>
                    </Button>
-                   <Button fx:id="btnLimpiar" mnemonicParsing="false" text="Limpiar" />
+                   <Button fx:id="btnLimpiar" onAction="#limpiar" mnemonicParsing="false" text="Limpiar" />
                </HBox>
            </VBox>
            <TableView fx:id="tabla" prefHeight="300.0" prefWidth="200.0" />
