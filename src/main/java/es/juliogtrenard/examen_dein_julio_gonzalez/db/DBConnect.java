@@ -32,7 +32,7 @@ public class DBConnect {
         connection.setAutoCommit(true);
         DatabaseMetaData databaseMetaData = connection.getMetaData();
 
-        System.out.println();
+        /*System.out.println();
         System.out.println("--- Datos de conexión ------------------------------------------");
         System.out.printf("Base de datos: %s%n", databaseMetaData.getDatabaseProductName());
         System.out.printf("  Versión: %s%n", databaseMetaData.getDatabaseProductVersion());
@@ -40,7 +40,7 @@ public class DBConnect {
         System.out.printf("  Versión: %s%n", databaseMetaData.getDriverVersion());
         System.out.println("----------------------------------------------------------------");
         System.out.println();
-        connection.setAutoCommit(true);
+        connection.setAutoCommit(true);*/
     }
 
     /**
