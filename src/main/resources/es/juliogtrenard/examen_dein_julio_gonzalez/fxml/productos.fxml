@@ -55,25 +55,25 @@
                            <Insets right="10.0" />
                        </HBox.margin>
                    </Label>
-                   <Button fx:id="btnImagen" mnemonicParsing="false" text="Seleccionar imagen...">
+                   <Button fx:id="btnImagen" onAction="#seleccionImagen" mnemonicParsing="false" text="Seleccionar imagen...">
                        <HBox.margin>
                            <Insets right="15.0" />
                        </HBox.margin>
                    </Button>
-                   <ImageView fx:id="imgImagen" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                   <ImageView fx:id="foto" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                </HBox>
                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                   <Button mnemonicParsing="false" text="Crear">
+                   <Button fx:id="btnCrear" mnemonicParsing="false" text="Crear">
                        <HBox.margin>
                            <Insets right="30.0" />
                        </HBox.margin>
                    </Button>
-                   <Button mnemonicParsing="false" text="Actualizar">
+                   <Button fx:id="btnActualizar" mnemonicParsing="false" text="Actualizar">
                        <HBox.margin>
                            <Insets right="15.0" />
                        </HBox.margin>
                    </Button>
-                   <Button mnemonicParsing="false" text="Limpiar" />
+                   <Button fx:id="btnLimpiar" mnemonicParsing="false" text="Limpiar" />
                </HBox>
            </VBox>
            <TableView fx:id="tabla" prefHeight="300.0" prefWidth="200.0" />
