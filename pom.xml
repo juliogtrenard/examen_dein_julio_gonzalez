@@ -83,7 +83,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                es.juliogtrenard.examen_dein_julio_gonzalez/es.juliogtrenard.examen_dein_julio_gonzalez.HelloApplication
+                                es.juliogtrenard.examen_dein_julio_gonzalez/es.juliogtrenard.examen_dein_julio_gonzalez.ProductosApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
