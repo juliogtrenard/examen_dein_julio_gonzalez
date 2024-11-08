@@ -1,6 +1,7 @@
 module es.juliogtrenard.examen_dein_julio_gonzalez {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens es.juliogtrenard.examen_dein_julio_gonzalez to javafx.fxml;
