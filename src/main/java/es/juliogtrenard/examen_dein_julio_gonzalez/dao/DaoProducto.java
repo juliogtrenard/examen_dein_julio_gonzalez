@@ -96,6 +96,7 @@ public class DaoProducto {
             pstmt.setBoolean(4, producto.isDisponible());
             pstmt.setBlob(5, producto.getImagen());
             int filasAfectadas = pstmt.executeUpdate();
+            System.out.println(filasAfectadas);
             pstmt.close();
             connection.closeConnection();
             return filasAfectadas > 0;
@@ -125,6 +126,7 @@ public class DaoProducto {
             pstmt.setBlob(4, productoNuevo.getImagen());
             pstmt.setString(5, producto.getCodigo());
             int filasAfectadas = pstmt.executeUpdate();
+            System.out.println(filasAfectadas);
             pstmt.close();
             connection.closeConnection();
             return filasAfectadas > 0;

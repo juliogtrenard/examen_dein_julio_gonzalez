@@ -141,6 +141,7 @@ public class ProductosController implements Initializable {
             DaoProducto.modificar(productoSeleccionado, productoNuevo);
             cargarProductos();
             limpiarCampos();
+            confirmacion("Producto actualizado correctamente!");
             btnActualizar.setDisable(true);
             btnCrear.setDisable(false);
             txtCodigo.setDisable(false);
