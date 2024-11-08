@@ -68,7 +68,7 @@
                            <Insets right="30.0" />
                        </HBox.margin>
                    </Button>
-                   <Button fx:id="btnActualizar" mnemonicParsing="false" text="Actualizar">
+                   <Button fx:id="btnActualizar" onAction="#actualizar" mnemonicParsing="false" text="Actualizar">
                        <HBox.margin>
                            <Insets right="15.0" />
                        </HBox.margin>

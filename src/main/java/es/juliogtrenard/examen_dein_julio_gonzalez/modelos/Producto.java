@@ -1,6 +1,7 @@
 package es.juliogtrenard.examen_dein_julio_gonzalez.modelos;
 
 import java.sql.Blob;
+import java.util.Objects;
 
 public class Producto {
     /**
@@ -139,5 +140,18 @@ public class Producto {
      */
     public void setImagen(Blob imagen) {
         this.imagen = imagen;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Producto producto = (Producto) o;
+        return Double.compare(precio, producto.precio) == 0 && disponible == producto.disponible && Objects.equals(codigo, producto.codigo) && Objects.equals(nombre, producto.nombre) && Objects.equals(imagen, producto.imagen);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigo, nombre, precio, disponible, imagen);
     }
 }

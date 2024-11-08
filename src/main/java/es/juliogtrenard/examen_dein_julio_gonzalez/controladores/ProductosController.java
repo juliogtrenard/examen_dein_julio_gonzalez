@@ -101,6 +101,50 @@ public class ProductosController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cargarProductos();
         btnActualizar.setDisable(true);
+
+        tabla.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
+            if (newValue != null) {
+                txtCodigo.setText(newValue.getCodigo());
+                txtCodigo.setDisable(true);
+                btnActualizar.setDisable(false);
+                btnCrear.setDisable(true);
+                txtNombre.setText(newValue.getNombre());
+                txtPrecio.setText(String.valueOf(newValue.getPrecio()));
+                cbDisponible.setSelected(newValue.isDisponible());
+
+                if (newValue.getImagen() != null) {
+                    InputStream imagen = null;
+                    try {
+                        imagen = newValue.getImagen().getBinaryStream();
+                    } catch (SQLException e) {
+                        alerta("Error al obtener la imagen");
+                    }
+                    assert imagen != null;
+                    foto.setImage(new Image(imagen));
+                }
+            }
+        });
+    }
+
+    /**
+     * Se ejecuta cuando se pulsa el botón "Actualizar".
+     */
+    @FXML
+    void actualizar() {
+        String error = validarCampos();
+        if (!error.isEmpty()) {
+            alerta(error);
+        } else {
+            Producto productoSeleccionado = tabla.getSelectionModel().getSelectedItem();
+            Producto productoNuevo = new Producto(txtCodigo.getText(), txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), cbDisponible.isSelected(), imagen);
+
+            DaoProducto.modificar(productoSeleccionado, productoNuevo);
+            cargarProductos();
+            limpiarCampos();
+            btnActualizar.setDisable(true);
+            btnCrear.setDisable(false);
+            txtCodigo.setDisable(false);
+        }
     }
 
     /**
